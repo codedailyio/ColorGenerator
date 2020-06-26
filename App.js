@@ -124,35 +124,26 @@ export default function App() {
     }
   }, [selectedColor]);
   return (
-    <View
-      style={{
-        flex: 1,
-        paddingVertical: 50,
-        paddingHorizontal: 20,
-        backgroundColor: "#E8ECF3",
-      }}
-    >
+    <View style={styles.container}>
       <Animated.View
-        style={{
-          position: "absolute",
-          top: 50,
-          left: 20,
-          right: 20,
-          zIndex: 10,
-          transform: [
-            {
-              translateY: animatedValue.interpolate({
-                inputRange: [0, 1],
-                outputRange: [-100, 0],
-              }),
-            },
-          ],
-        }}
+        style={[
+          styles.toastPosition,
+          {
+            transform: [
+              {
+                translateY: animatedValue.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-100, 0],
+                }),
+              },
+            ],
+          },
+        ]}
       >
         <ToastBar color={selectedColor} />
       </Animated.View>
       <ScrollView
-        style={styles.container}
+        style={{ flex: 1 }}
         contentContainerStyle={{
           justifyContent: "space-between",
           flexGrow: 1,
@@ -202,6 +193,16 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingVertical: 50,
+    paddingHorizontal: 20,
+    backgroundColor: "#E8ECF3",
+  },
+  toastPosition: {
+    position: "absolute",
+    top: 50,
+    left: 20,
+    right: 20,
+    zIndex: 10,
   },
   toast: {
     backgroundColor: "#0C1226",
