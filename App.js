@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, Fragment } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -17,7 +17,7 @@ const getHSLString = (color) => {
 };
 
 const ColorCard = ({ color, onPress }) => {
-  const [animation] = useState(new Animated.Value(1));
+  const [animation] = useState(new Animated.Value(0));
   const prevColor = usePrevious(color)?.current || color;
 
   useLayoutEffect(() => {
@@ -142,13 +142,7 @@ export default function App() {
       >
         <ToastBar color={selectedColor} />
       </Animated.View>
-      <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{
-          justifyContent: "space-between",
-          flexGrow: 1,
-        }}
-      >
+      <ScrollView style={{ flex: 1 }}>
         <View
           style={{
             flex: 1,
